@@ -1,0 +1,128 @@
+/* main.css */
+
+/* General Styles */
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #f0f8ff; /* Light Azure */
+    color: #333;
+   
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    height: 100vh;
+}
+.navbar {
+    width: 100%;
+    height: 40px;
+    background-color: #490ae8a4; /* Teal */
+    color: #100101;
+    text-align:justify;
+    display: flex;
+    justify-content: start;
+    align-items: center;
+}
+/* Chatbot Container */
+.chatbot-container {
+    width: 50%;
+    height: 400px;
+    background-color: #e0f7fa; /* Light Cyan */
+    border-radius: 20px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    display: flex;              
+    flex-direction: column;
+    justify-content: space-between; 
+    
+}
+
+/* Header */
+.chatbot-header {
+    background-color: #074fca; /* Teal */
+    color: #ffffff;
+    padding: 15px;
+    text-align: center;
+    font-size: 1.2em;
+    font-weight: bold;
+}
+
+/* Chat Area */
+.chat-area {
+    flex-grow: 1;
+    padding: 20px;
+    overflow-y: auto;
+    background-color: #ffffff;
+}
+
+/* Message Styles */
+.message {
+    display: flex;
+    margin-bottom: 15px;
+}
+
+.message.user {
+    justify-content: flex-end;
+}
+
+.message.bot {
+    justify-content: flex-start;
+}
+
+.message .text {
+    max-width: 70%;
+    padding: 10px 15px;
+    border-radius: 20px;
+    font-size: 0.9em;
+    line-height: 1.4;
+}
+
+.message.user .text {
+    background-color: #b2dfdb; /* Light Teal */
+    color: #004d40; /* Dark Teal */
+    border-bottom-right-radius: 0;
+}
+
+.message.bot .text {
+    background-color: #e0f2f1; /* Light Teal */
+    color: #00796b; /* Teal */
+    border-bottom-left-radius: 0;
+}
+
+/* Input Area */
+.input-area {
+    display: flex;
+    border-top: 1px solid #eeeeee;
+    background-color: #f0f8ff;
+    padding: 10px 15px;
+}
+
+.input-area input[type="text"] {
+    flex-grow: 1;
+    border: none;
+    padding: 10px;
+    border-radius: 20px;
+    font-size: 1em;
+    background-color: #e0f2f1;
+    color: #333;
+    outline: none;
+    margin-right: 10px;
+}
+
+.input-area input[type="text"]::placeholder {
+    color: #757575; /* Gray */
+}
+
+.input-area button {
+    background-color: #00796b;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 50%;
+    cursor: pointer;
+    color: white;
+    font-size: 1em;
+}
+
+.input-area button:hover {
+    background-color: #004d40; /* Dark Teal */
+}
+

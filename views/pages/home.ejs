@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chat Interface</title>
+    <!-- Link to the CSS file -->
+    <link rel="stylesheet" href="../css/main.css">
+</head>
+<body>
+    <div class="navbar">
+        <ul>
+            <li><a href="/home" style="color: hsl(152, 67%, 25%);">Home</a></li>
+        </ul>
+        <ul>  
+        <li><a href="/about" style="color: whsl(152, 67%, 25%;">About</a></li>
+    </ul>
+    <ul>
+      
+    <li><a href="/contect" style="color: hsl(152, 67%, 25%;">Contact</a></li>
+        </ul>
+    </div> 
+    <!-- Chat Interface -->
+    <div class="chatbot-container">
+        <div class="chatbot-header">
+            Chatbot
+        </div>
+        <div id="chat-window" class="chat-area">
+            <!-- Messages will appear here -->
+        </div>
+
+        <!-- Message Input -->
+        <div class="input-area">
+            <form id="message-form">
+                <input type="text" id="message-input" placeholder="Type your message..." required>
+                <button type="submit">Send</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- jQuery for AJAX functionality -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+        $(document).ready(function() {
+            $('#message-form').on('submit', function(e) {
+                e.preventDefault();
+                const userMessage = $('#message-input').val();
+
+                $.ajax({
+                    url: '/send-message',
+                    type: 'POST',
+                    contentType: 'application/json',
+                    data: JSON.stringify({ message: userMessage }),
+                    success: function(response) {
+                        const botReply = response.reply;
+
+                        // Append user message to chat window
+                        $('#chat-window').append(`<div class="message user"><div class="text">${userMessage}</div></div>`);
+
+                        // Append bot reply to chat window
+                        $('#chat-window').append(`<div class="message bot"><div class="text">${botReply}</div></div>`);
+
+                        // Scroll to the bottom of the chat window
+                        $('#chat-window').scrollTop($('#chat-window')[0].scrollHeight);
+
+                        // Clear the input field
+                        $('#message-input').val('');
+                    },
+                    error: function(error) {
+                        console.error('Error:', error);
+                        alert('Failed to send message. Please try again.');
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>
