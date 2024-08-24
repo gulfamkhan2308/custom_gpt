@@ -12,7 +12,7 @@ const openai = new OpenAI({
 });
 
 const app = express();
-const port = 3000 || process.env.PORT;
+const port = 8000 || process.env.PORT;
 
 app.use(express.static("public"));
 app.use(bodyParser.json());
